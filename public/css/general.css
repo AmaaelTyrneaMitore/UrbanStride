@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+
+body::before {
+  content: 'Practice Project';
+  font-size: 1.6rem;
+  background-color: #ee9322;
+  line-height: 1.4;
+  font-weight: 700;
+  position: absolute;
+  transform: rotate(-35deg);
+  text-align: center;
+  top: 3rem;
+  left: -2.5rem;
+  width: 20rem;
+  height: 2.4rem;
+}
+
+.container {
+  max-width: 166.4rem;
+  margin: 0 auto;
+  align-self: center;
+}
+
+.grid {
+  display: grid;
+  column-gap: 8rem;
+  row-gap: 6.4rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 3.2rem;
+  color: #180b2f;
+  padding: 1.8rem;
+  font-family: 'Varela Round', sans-serif;
+  text-align: center;
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 25%);
+}
+
+/*******************************/
+/*        HELPER CLASSES       */
+/*******************************/
+
+.margin-bottom-sm {
+  margin-bottom: 6.4rem !important;
+}
+
+.margin-bottom-md {
+  margin-bottom: 8rem !important;
+}

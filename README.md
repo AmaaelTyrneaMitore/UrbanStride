@@ -2,7 +2,7 @@
 
 Step up your shoe game with Urban Stride - Where Style Meets Motion!
 
-![Urban Stride Logo](logo.png)
+![Urban Stride Logo](public/img/logo.png)
 
 ## About
 

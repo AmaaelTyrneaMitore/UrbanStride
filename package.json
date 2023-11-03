@@ -93,6 +93,7 @@
    "homepage": "https://github.com/AmaaelTyrneaMitore/UrbanStride#readme",
    "dependencies": {
       "app-root-path": "^3.1.0",
+      "axios": "^1.6.0",
       "ejs": "^3.1.9",
       "express": "^4.18.2",
       "mongoose": "^8.0.0"

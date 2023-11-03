@@ -1,8 +1,10 @@
-import express from 'express';
 import { join } from 'path';
+
+import express from 'express';
 import appRootPath from 'app-root-path';
 
-import { log, italic, underline } from './utils/logger.js';
+import { log, italic, underline, error } from './utils/logger.js';
+import { getPublicIpAddress, getPrivateIpAddress } from './utils/getIp.js';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -18,14 +20,22 @@ app.use((_req, res) => {
   res.status(404).render('404', { pageTitle: '🤔 404 ― Page Not Found!' });
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   log({
     message: `Server started at port: ${italic(underline(PORT))}`,
     clearConsole: true,
   });
   log({
     message: `Visit the server at: ${italic(
-      underline('http://127.0.0.1:3000/'),
+      underline(`http://${getPrivateIpAddress()}:${PORT}/`),
     )}`,
   });
+  try {
+    const publicIpAddress = await getPublicIpAddress();
+    log({ message: `Sever IP: ${italic(underline(publicIpAddress))}` });
+  } catch (err) {
+    err instanceof Error
+      ? error(err.message)
+      : error('Unable to retrieve public IP address');
+  }
 });

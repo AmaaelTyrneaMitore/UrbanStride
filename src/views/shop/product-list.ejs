@@ -1,0 +1,163 @@
+    <%- include('includes/head.ejs')  %>
+    <link rel="stylesheet" href="/css/error.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- NAVIGATION -->
+      <nav class="main-nav container">
+        <!-- LEFT NAVIGATION (LINKS) -->
+        <div>
+          <ul class="main-nav-links">
+            <li>
+              <a class="main-nav-link active" href="#"
+                ><i class="fa-solid fa-shop"></i> Shop</a
+              >
+            </li>
+            <li>
+              <a class="main-nav-link" href="#"
+                ><i class="fa-solid fa-cart-shopping"></i> Cart</a
+              >
+            </li>
+            <li>
+              <a class="main-nav-link" href="#"
+                ><i class="fa-solid fa-truck-fast"></i> Orders</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- SITE LOGO (CENTER) -->
+        <a href="#">
+          <img class="logo" src="/img/logo.png" alt="urban stride logo" />
+        </a>
+
+        <!-- NAVIGATION ACTIONS (RIGHT) -->
+        <div class="main-nav-actions">
+          <form action="#" method="get">
+            <button class="main-nav-action add">
+              <i class="fa-solid fa-circle-plus"></i> Add
+            </button>
+          </form>
+
+          <form action="#" method="get">
+            <button class="main-nav-action">
+              <i class="fa-solid fa-key"></i> Admin
+            </button>
+          </form>
+          <form action="#" method="get">
+            <button class="main-nav-action">
+              <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </button>
+          </form>
+        </div>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <div class="container">
+        <% if (products.length > 0 ) { %>
+        <!-- PRODUCTS GRID -->
+        <div class="products grid grid--3-cols">
+          <% for( let product of products ) { %>
+          <!-- PRODUCT CARD -->
+            <article class="product card">
+            <form action="#" method="post">
+              <button class="add-to-cart" type="submit">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+            </form>
+            <header>
+              <img
+                class="product-img"
+                src="/img/product-3.jpg"
+                alt="product image"
+              />
+              <div class="product-details">
+                <p class="product-title"><%= product.title %></p>
+                <p class="product-price">$<%= product.price %></p>
+              </div>
+            </header>
+
+            <footer class="product-actions">
+              <form action="#" method="get">
+                <button class="details" type="submit">
+                  View Details <i class="fa-solid fa-arrow-right-long"></i>
+                </button>
+              </form>
+            </footer>
+            </article>
+          <% } %>
+        </div>
+
+        <nav class="pagination margin-bottom-md">
+          <ul class="pagination-links">
+            <li><a href="#" class="pagination-link active">1</a></li>
+            <li><a href="#" class="pagination-link">2</a></li>
+            <li><a href="#" class="pagination-link">3</a></li>
+            <li><a href="#" class="pagination-link">4</a></li>
+            <li><a href="#" class="pagination-link">5</a></li>
+          </ul>
+        </nav>
+        <% } else { %>
+          <div class="error-card card card--linear margin-bottom-sm">
+            <h1 class="error-code">Boo<i class="fa-solid fa-ghost"></i>!</h1>
+            <p class="error-title">No Products Found!</p>
+            <p class="error-subtitle margin-bottom-sm">
+              But you can create new ones!
+            </p>
+            <p class="error-message">[🛍️ Products took a sabbatical 🛒]</p>
+          </div>
+          <% } %>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer container">
+      <div class="footer-nav">
+        <!-- FOOTER LOGO  -->
+        <a href="#">
+          <img
+            class="footer-logo"
+            src="/img/logo-invert.png"
+            alt="urban stride logo"
+          />
+        </a>
+
+        <!-- SOCIAL LINKS  -->
+        <ul class="social-links">
+          <li>
+            <a class="social-link" href="#"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </li>
+          <li>
+            <a class="social-link" href="#"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </li>
+          <li>
+            <a class="social-link" href="#"
+              ><i class="fa-brands fa-hackerrank"></i
+            ></a>
+          </li>
+          <li>
+            <a class="social-link" href="#"
+              ><i class="fa-brands fa-discord"></i
+            ></a>
+          </li>
+          <li>
+            <a class="social-link" href="#"
+              ><i class="fa-solid fa-envelope"></i
+            ></a>
+          </li>
+        </ul>
+
+        <!-- AUTHOR TEXT -->
+        <p class="author-text">&copy; Shashank Singh &bull; October 2023</p>
+      </div>
+    </footer>
+  </body>
+</html>

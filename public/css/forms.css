@@ -6,13 +6,13 @@
 
 .error-message.error-message-popup {
   padding: 1.8rem;
-  color: #ee0000;
+  background-color: rgba(238, 0, 0, 0.15);
   font-size: 2.4rem;
-  background: rgba(255, 255, 255, 0.25);
   border: 1px solid #ee0000;
-  backdrop-filter: blur(2rem);
+  color: #ee0000;
   border-radius: 1rem;
   text-align: center;
+  margin: 2.4rem 0;
 }
 
 .form-control {
@@ -106,7 +106,7 @@
   color: #fff;
   transition: all 0.3s;
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 25%);
-  cursor: pointer;
+  cursor: url('../img/cursor-hand.png'), pointer;
 }
 
 .submit-btn:hover {

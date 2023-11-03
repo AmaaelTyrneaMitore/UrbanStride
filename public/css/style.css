@@ -14,7 +14,7 @@
   justify-content: space-between;
   padding: 2.4rem 4.8rem;
   width: 100%;
-  font-family: 'Itim', sans-serif;
+  font-family: "Itim", sans-serif;
 }
 
 .main-nav-links {
@@ -43,7 +43,7 @@
   transition: all 0.3s;
   background-color: #b089f4;
   box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 25%);
-  cursor: pointer;
+  cursor: url("../img/cursor-hand.png"), pointer;
 }
 
 .main-nav-link:hover {
@@ -74,7 +74,7 @@
 }
 
 .main-nav-action {
-  font-family: 'Itim', sans-serif;
+  font-family: "Itim", sans-serif;
   font-size: 1.92rem;
   padding: 1.2rem 2.4rem;
   border: none;
@@ -84,7 +84,7 @@
   transition: all 0.3s;
   box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 25%);
   margin: 1.6rem 0;
-  cursor: pointer;
+  cursor: url("../img/cursor-hand.png"), pointer;
 }
 
 .main-nav-action:hover {
@@ -168,7 +168,7 @@
   top: -2rem;
   left: -2rem;
   z-index: 1;
-  cursor: pointer;
+  cursor: url("../img/cursor-hand.png"), pointer;
   box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 30%);
   transition: all 0.3s;
 }
@@ -189,7 +189,7 @@
   background: none;
   border: none;
   letter-spacing: 0.75px;
-  cursor: pointer;
+  cursor: url("../img/cursor-hand.png"), pointer;
   margin-bottom: 1.4rem;
   transition: all 0.3s;
 }
@@ -235,7 +235,7 @@
   align-items: center;
   border-radius: 50%;
   background-color: #fff;
-  cursor: pointer;
+  cursor: url("../img/cursor-hand.png"), pointer;
   box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
   transition: all 0.3s;
 }
@@ -304,7 +304,7 @@
 }
 
 .author-text {
-  font-family: 'Itim', sans-serif;
+  font-family: "Itim", sans-serif;
   font-size: 1.6rem;
   text-transform: uppercase;
 }
@@ -314,7 +314,7 @@
 /*******************************/
 
 .product-details-container {
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   align-items: center;
   gap: 0;
   justify-content: center;
@@ -402,13 +402,13 @@
   width: 40%;
   background-color: #f72585;
   border: none;
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   color: #fff;
   font-size: 2.4rem;
   box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
   padding: 0.8rem 1.4rem;
-  cursor: pointer;
+  cursor: url("../img/cursor-hand.png"), pointer;
   border-radius: 1rem;
 }
 
@@ -432,14 +432,14 @@
   width: 100%;
   background-color: #f72585;
   border: none;
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   color: #fff;
   font-size: 2.4rem;
   box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
   padding: 1.4rem 2.8rem;
   border-radius: 1rem;
-  cursor: pointer;
+  cursor: url("../img/cursor-hand.png"), pointer;
 }
 
 .checkout .submit-btn:hover {
@@ -484,14 +484,14 @@
   width: 100%;
   background-color: #f72585;
   border: none;
-  font-family: 'Varela Round', sans-serif;
+  font-family: "Varela Round", sans-serif;
   color: #fff;
   font-size: 2rem;
   box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
   padding: 1.4rem 2.8rem;
   border-radius: 1rem;
-  cursor: pointer;
+  cursor: url("../img/cursor-hand.png"), pointer;
 }
 
 .orders-product-header .submit-btn:hover,

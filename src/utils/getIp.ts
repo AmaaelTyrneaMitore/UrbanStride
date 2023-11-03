@@ -1,7 +1,16 @@
+/*
+ * Utility file for getting & printing IP addresses
+ */
+
 import os from 'os';
 
 import axios from 'axios';
 
+/**
+ * Retrieves the public IP address of the server.
+ * @returns {Promise<string>} A Promise that resolves with the public IP address.
+ * @throws {Error} If unable to retrieve the public IP address.
+ */
 export async function getPublicIpAddress(): Promise<string> {
   try {
     const response = await axios.get('https://api.ipify.org');
@@ -11,6 +20,10 @@ export async function getPublicIpAddress(): Promise<string> {
   }
 }
 
+/**
+ * Retrieves the private (local) IP address of the server.
+ * @returns {string} The private IP address.
+ */
 export function getPrivateIpAddress() {
   const interfaces = os.networkInterfaces();
 

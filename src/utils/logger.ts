@@ -47,10 +47,14 @@ export const warn = (message: string) => {
 
 /**
  * Logs an error message to the console.
- * @param {string} message - The error message to be logged.
+ * @param {unknown} err - The error message to be logged.
  */
-export const error = (message: string) => {
-  console.log(`${chalk.bold.red('[+]')} ${message}`);
+export const error = (err: unknown) => {
+  if (err instanceof Error) {
+    console.log(`${chalk.bold.red('[+]')} ${err.message}`);
+  } else if (typeof error === 'string') {
+    console.log(`${chalk.bold.red('[+]')} ${err}`);
+  } else throw new Error('error only accepts a string or Error object');
 };
 
 export const underline = chalk.underline;

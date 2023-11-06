@@ -77,3 +77,29 @@ export const getEditProduct: RequestHandler<
     error(err);
   }
 };
+
+export const postEditProduct: RequestHandler<
+  unknown,
+  unknown,
+  { [key: string]: string }
+> = async (req, res) => {
+  const {
+    _id: productId,
+    title: updatedTitle,
+    price: updatedPrice,
+    description: updatedDescription,
+  } = req.body;
+
+  try {
+    const product = await Product.findById(productId);
+    if (product) {
+      product.title = updatedTitle;
+      product.price = Number(updatedPrice);
+      product.description = updatedDescription;
+      product.save();
+      res.redirect('/admin/products');
+    }
+  } catch (err) {
+    error(err);
+  }
+};

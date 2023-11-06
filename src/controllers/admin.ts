@@ -34,7 +34,12 @@ export const postAddProduct: RequestHandler<
   const { title, price, description } = req.body;
 
   // Create a new product with the data submitted by user
-  const product = new Product({ title, price, description });
+  const product = new Product({
+    title,
+    price,
+    description,
+    userId: req.user, // we don't have to explicitly set _id as mongoose will automatically pick it
+  });
 
   try {
     // Save the product to the database

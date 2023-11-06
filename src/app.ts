@@ -13,6 +13,18 @@ import { get404 } from './controllers/errors.js';
 import adminRouter from './routes/admin.js';
 import shopRouter from './routes/shop.js';
 
+import User, { UserDocument } from './models/user.js';
+
+/*
+  Using module augmentation for patching the Request object
+  and adding an user field to it which is of type User
+*/
+declare module 'express-serve-static-core' {
+  interface Request {
+    user: UserDocument;
+  }
+}
+
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
 const rootDir = appRootPath.toString();
@@ -26,6 +38,18 @@ app.set('views', join(rootDir, 'src', 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(rootDir, 'public')));
 
+app.use(async (req, _res, next) => {
+  try {
+    const user = await User.findById('65490213762aa9e4f9e57e2f');
+    if (user) {
+      req.user = user;
+      next();
+    }
+  } catch (err) {
+    error(err);
+  }
+});
+
 app.use('/admin', adminRouter);
 app.use(shopRouter);
 
@@ -37,6 +61,19 @@ try {
   connect(
     `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@urbanstride.zwaxdb4.mongodb.net/${process.env.MONGO_DEFAULT_DB}?retryWrites=true&w=majority`,
   );
+
+  let user = await User.findOne();
+  if (!user) {
+    user = new User({
+      name: 'Shashank Singh',
+      email: 'joemama@isslick.com',
+      cart: {
+        items: [],
+      },
+    });
+
+    user.save();
+  }
 
   // Start the Express server
   app.listen(PORT, async () => {

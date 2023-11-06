@@ -1,7 +1,7 @@
 import { Schema, Document, model } from 'mongoose';
 
 // Define the structure of a product document
-interface ProductDocument extends Document {
+export interface ProductDocument extends Document {
   title: string;
   price: number;
   description: string;
@@ -20,7 +20,8 @@ const productSchema = new Schema<ProductDocument>({
   description: { type: String, required: true },
 
   // Binary image data of the product
-  image: { type: Buffer, required: true },
+  // TODO: use multer deal with image buffer and then set required to true
+  image: Buffer,
 });
 
 // Create a model based on the product schema

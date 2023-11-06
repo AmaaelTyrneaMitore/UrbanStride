@@ -1,176 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= pagetitle %></title>
+<%- include('../includes/head.ejs')  %>
+<link rel="stylesheet" href="/css/forms.css" />
+<link rel="stylesheet" href="/css/queries.css" />
+</head>
 
-    <!-- FONT AWESOME SCRIPT -->
-    <script
-      src="https://kit.fontawesome.com/6fcc669dda.js"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- GOOGLE FONTS SCRIPT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Mali:wght@700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Itim&family=Varela+Round&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- MY SCIPTS -->
-    <script src="/js/main.js" defer></script>
-
-    <!-- MY CSS -->
-    <link rel="stylesheet" href="/css/general.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="/css/forms.css" />
-  </head>
-
-  <body>
-    <!-- HEADER -->
-    <header>
-      <!-- NAVIGATION -->
-      <nav class="main-nav container">
-        <!-- LEFT NAVIGATION (LINKS) -->
-        <div>
-          <ul class="main-nav-links">
-            <li>
-              <a class="main-nav-link active" href="#"
-                ><i class="fa-solid fa-shop"></i> Shop</a
-              >
-            </li>
-            <li>
-              <a class="main-nav-link" href="#"
-                ><i class="fa-solid fa-cart-shopping"></i> Cart</a
-              >
-            </li>
-            <li>
-              <a class="main-nav-link" href="#"
-                ><i class="fa-solid fa-truck-fast"></i> Orders</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <!-- SITE LOGO (CENTER) -->
-        <a href="#">
-          <img class="logo" src="/img/logo.png" alt="urban stride logo" />
-        </a>
-
-        <!-- NAVIGATION ACTIONS (RIGHT) -->
-        <div class="main-nav-actions">
-          <form action="#" method="get">
-            <button class="main-nav-action add">
-              <i class="fa-solid fa-circle-plus"></i> Add
-            </button>
-          </form>
-
-          <form action="#" method="get">
-            <button class="main-nav-action">
-              <i class="fa-solid fa-key"></i> Admin
-            </button>
-          </form>
-          <form action="#" method="get">
-            <button class="main-nav-action">
-              <i class="fa-solid fa-right-from-bracket"></i> Logout
-            </button>
-          </form>
-        </div>
-      </nav>
-    </header>
+<body>
+<%- include('../includes/navigation.ejs') %>
 
     <!-- MAIN CONTENT -->
     <main>
       <div class="container">
-          <form enctype="multipart/form-data" action="#" method="POST" class="form-control grid grid--2-cols">
+          <form action="/admin/<%= editing ? 'edit-product' : 'add-product'%>" method="POST" class="form-control grid grid--2-cols">
             <div class="inputs">
               <input
                 type="text"
                 name="title"
                 placeholder="Enter product title"
-                value=""
+                value="<%= editing ? product.title : '' %>"
               />
               <input
                 type="number"
                 name="price"
                 placeholder="Enter product price"
                 step="0.01"
-                value=""
+                value="<%= editing ? product.price : '' %>"
               />
               <textarea
                 name="description"
                 rows="10"
                 placeholder="Enter product description."
               >
+              <%= editing ? product.description : '' %>
               </textarea>
-              <button class="submit-btn" type="submit">Add Product</button>
+              <button class="submit-btn" type="submit"><%= editing ? 'Save Changes' : 'Add Product' %></button>
             </div>
 
             <div class="image-selection">
               <label for="file">
                 <div class="img-container card">
                   <p class="img-icon"><i class="fa-solid fa-image"></i></p>
-                  <p>Click here to upload your image</p>
+                  <p><%= editing ? 'Click here to update your image' : 'Click here to add your image' %></p>
                 </div>
               </label>
               <input type="file" name="img" id="file" class="img-input" />
             </div>
+            <% if (editing) {%>
+              <input type="hidden" name="_id" value="<%= product._id %>" />
+              <% } %>
           </form>
         </div>
-      </div>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer container">
-      <div class="footer-nav">
-        <!-- FOOTER LOGO  -->
-        <a href="#">
-          <img
-            class="footer-logo"
-            src="/img/logo-invert.png"
-            alt="urban stride logo"
-          />
-        </a>
-
-        <!-- SOCIAL LINKS  -->
-        <ul class="social-links">
-          <li>
-            <a class="social-link" href="#"
-              ><i class="fa-brands fa-linkedin"></i
-            ></a>
-          </li>
-          <li>
-            <a class="social-link" href="#"
-              ><i class="fa-brands fa-github"></i
-            ></a>
-          </li>
-          <li>
-            <a class="social-link" href="#"
-              ><i class="fa-brands fa-hackerrank"></i
-            ></a>
-          </li>
-          <li>
-            <a class="social-link" href="#"
-              ><i class="fa-brands fa-discord"></i
-            ></a>
-          </li>
-          <li>
-            <a class="social-link" href="#"
-              ><i class="fa-solid fa-envelope"></i
-            ></a>
-          </li>
-        </ul>
-
-        <!-- AUTHOR TEXT -->
-        <p class="author-text">&copy; Shashank Singh &bull; October 2023</p>
-      </div>
-    </footer>
-  </body>
-</html>
+        <%- include('../includes/end.ejs') %>

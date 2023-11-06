@@ -10,6 +10,7 @@ import { getPublicIpAddress, getPrivateIpAddress } from './utils/getIp.js';
 
 // Controller for handling 404 errors
 import { get404 } from './controllers/errors.js';
+import { adminRouter } from './routes/admin.js';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -24,13 +25,15 @@ app.set('views', join(rootDir, 'src', 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(rootDir, 'public')));
 
+app.use('/admin', adminRouter);
+
 // Middleware to handle 404 errors
 app.use(get404);
 
 try {
   // Connect to the MongoDB database
   connect(
-    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@urbanstride.zwaxdb4.mongodb.net/?retryWrites=true&w=majority`,
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@urbanstride.zwaxdb4.mongodb.net/${process.env.MONGO_DEFAULT_DB}?retryWrites=true&w=majority`,
   );
 
   // Start the Express server

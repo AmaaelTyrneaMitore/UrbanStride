@@ -10,7 +10,8 @@ import { getPublicIpAddress, getPrivateIpAddress } from './utils/getIp.js';
 
 // Controller for handling 404 errors
 import { get404 } from './controllers/errors.js';
-import { adminRouter } from './routes/admin.js';
+import adminRouter from './routes/admin.js';
+import shopRouter from './routes/shop.js';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(join(rootDir, 'public')));
 
 app.use('/admin', adminRouter);
+app.use(shopRouter);
 
 // Middleware to handle 404 errors
 app.use(get404);

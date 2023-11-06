@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 
 import Product, { ProductDocument } from '../models/product.js';
-import { error, log } from '../utils/logger.js';
+import { error } from '../utils/logger.js';
 
 // Handler for rendering the "Add Product" page
 export const getAddProduct: RequestHandler = (_req, res) => {
@@ -26,10 +26,6 @@ export const postAddProduct: RequestHandler<
   try {
     // Save the product to the database
     await product.save();
-
-    // Log a success message and the created product
-    log({ message: 'Product created' });
-    log({ object: product });
 
     // Redirect to the admin products page after successful creation
     res.redirect('/admin/products ');

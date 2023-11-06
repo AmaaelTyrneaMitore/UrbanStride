@@ -1,6 +1,11 @@
 import { Router } from 'express';
 
-import { getAddProduct, postAddProduct } from '../controllers/admin.js';
+import {
+  getAddProduct,
+  getEditProduct,
+  postAddProduct,
+  getProducts,
+} from '../controllers/admin.js';
 
 const adminRouter = Router();
 
@@ -9,5 +14,9 @@ adminRouter
   .route('/add-product')
   .get(getAddProduct) // When a GET request is made to /add-product, call the getAddProduct function
   .post(postAddProduct); // When a POST request is made to /add-product, call the postAddProduct function
+
+adminRouter.get('/products', getProducts);
+
+adminRouter.post('/edit-product/:productId', getEditProduct);
 
 export default adminRouter;

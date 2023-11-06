@@ -41,7 +41,7 @@ export const postAddProduct: RequestHandler<
     await product.save();
 
     // Redirect to the admin products page after successful creation
-    res.redirect('/admin/products ');
+    res.redirect('/admin/products');
   } catch (err) {
     // If an error occurs, log it
     error(err);
@@ -84,7 +84,7 @@ export const postEditProduct: RequestHandler<
   { [key: string]: string }
 > = async (req, res) => {
   const {
-    _id: productId,
+    id: productId,
     title: updatedTitle,
     price: updatedPrice,
     description: updatedDescription,
@@ -99,6 +99,20 @@ export const postEditProduct: RequestHandler<
       product.save();
       res.redirect('/admin/products');
     }
+  } catch (err) {
+    error(err);
+  }
+};
+
+export const postDeleteProduct: RequestHandler<
+  unknown,
+  unknown,
+  { [key: string]: string }
+> = async (req, res) => {
+  const { id: productId } = req.body;
+  try {
+    await Product.findByIdAndDelete(productId);
+    res.redirect('/admin/products');
   } catch (err) {
     error(err);
   }

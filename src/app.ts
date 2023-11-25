@@ -58,8 +58,8 @@ app.use(get404);
 
 try {
   // Connect to the MongoDB database
-  connect(
-    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@urbanstride.zwaxdb4.mongodb.net/${process.env.MONGO_DEFAULT_DB}?retryWrites=true&w=majority`,
+  await connect(
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@shopdb.2rf1pd9.mongodb.net/${process.env.MONGO_DEFAULT_DB}?retryWrites=true&w=majority`,
   );
 
   let user = await User.findOne();
